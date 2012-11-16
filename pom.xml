@@ -1,21 +1,46 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>robertosimoni</groupId>
-  <artifactId>tdd-in-javascript</artifactId>
-  <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>tdd-in-javascript Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.10</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-  <build>
-    <finalName>tdd-in-javascript</finalName>
-  </build>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>robertosimoni</groupId>
+	<artifactId>tdd-in-javascript</artifactId>
+	<packaging>war</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>tdd-in-javascript Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>tdd-in-javascript</finalName>
+
+		<plugins>
+			<plugin>
+				<groupId>com.github.searls</groupId>
+				<artifactId>jasmine-maven-plugin</artifactId>
+				<version>1.2.0.0</version>
+				<extensions>true</extensions>
+
+				<executions>
+					<execution>
+						<goals>
+							<goal>bdd</goal>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- Questa e' la directory dove abbiamo deciso di mettere i nostri 
+						Javascript. Per quanto riguarda i test, il default e' gia' src/test/javascript 
+						per cui non e' necessario indicare nulla. Avremmo potuto comunque scegliere 
+						una directory ad hoc utilizzando il parametro: jsTestSrcDir -->
+					<jsSrcDir>${project.basedir}/src/main/webapp/js</jsSrcDir>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
